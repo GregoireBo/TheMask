@@ -17,5 +17,5 @@ jobs:
       - name: Package
         run: cd myapp && mvn package
       - name: Deploy
-        run: scp -o StrictHostKeyChecking=no -i $tomcatKey  target/myapp.war tomcat@89.86.78.77:/opt/tomcat/webapps/myapp.war
+        run: spawn scp "-o StrictHostKeyChecking=no -i $tomcatKey  target/myapp.war tomcat@89.86.78.77:/opt/tomcat/webapps/myapp.war" expect "*assword:*" send "password\r" expect eof exit
 
