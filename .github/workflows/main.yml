@@ -1,4 +1,4 @@
-name: Java CI
+name: Java test and deploy
 
 on: [push]
 
@@ -12,5 +12,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Build with Maven
-        run: cd myapp && mvn test --batch-mode
+      - name: Test with Maven
+        run: cd myapp && mvn test --batch-mode 
+      - name: Deploy
+        run: scp -o StrictHostKeyChecking=no -p $CI_PASS /builds/p1509899/projetweb/server/target/server.war tomcat@89.86.78.77:/opt/tomcat/webapps/myapp.war
+
