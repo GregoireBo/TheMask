@@ -16,6 +16,11 @@ jobs:
         run: cd myapp && mvn test --batch-mode 
       - name: Package
         run: cd myapp && mvn package
-      - name: Deploy
-        run: spawn scp "-o StrictHostKeyChecking=no -i $tomcatKey  target/myapp.war tomcat@89.86.78.77:/opt/tomcat/webapps/myapp.war" expect "*assword:*" send "password\r" expect eof exit
-
+      - name: Copy folder content recursively to remote
+        uses: garygrossgarten/github-action-scp@v0.7.3
+        with:
+          local: target/myapp.war
+          remote: opt/tomcat/wabapps/myapp.war
+          host: 89.86.78.77
+          username: tomcat
+          password: password
