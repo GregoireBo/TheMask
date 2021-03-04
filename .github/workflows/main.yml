@@ -15,5 +15,5 @@ jobs:
       - name: Test with Maven
         run: cd myapp && mvn test --batch-mode 
       - name: Deploy
-        run: scp -o StrictHostKeyChecking=no -p "raspberry" target/myapp.war tomcat@89.86.78.77:/opt/tomcat/webapps/myapp.war
+        run: scp -o StrictHostKeyChecking=no -p "password" target/myapp.war tomcat@89.86.78.77:/opt/tomcat/webapps/myapp.war
 
