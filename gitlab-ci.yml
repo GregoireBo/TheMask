@@ -1,0 +1,10 @@
+stages:
+  - junit
+
+junit:
+  stage: junit
+  image: maven:3.6.1-jdk-11
+  before_script:
+   - . my-app/setup-mvn-proxy.sh
+  script:
+    - cd my-app && mvn test --batch-mode
