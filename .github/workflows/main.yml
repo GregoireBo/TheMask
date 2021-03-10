@@ -16,11 +16,3 @@ jobs:
         run: cd myapp && mvn test --batch-mode 
       - name: Package
         run: cd myapp && mvn package
-      - name: Copy folder content recursively to remote
-        uses: garygrossgarten/github-action-scp@v0.7.3
-        with:
-          local: myapp/target/myapp.war
-          remote: /opt/tomcat/wabapps/myapp.war
-          host: 89.86.78.77
-          username: tomcat
-          password: password
