@@ -9,6 +9,8 @@ import java.io.IOException;
 
 public class ViewBase extends HttpServlet {
 
+  private static final long serialVersionUID = 1L;
+
     /**
      * Permet d'executer une requête post ou get.
      * @param request Contient une requête du protocole HTTP
@@ -19,7 +21,7 @@ public class ViewBase extends HttpServlet {
       throws ServletException, IOException {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(
-          "index.jsp");
+          "views/index.xhtml");
         dispatcher.forward(request, response);
     }
 
