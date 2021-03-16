@@ -21,7 +21,7 @@ public class ViewBase extends HttpServlet {
       throws ServletException, IOException {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(
-          "views/index.xhtml");
+          "views/index.jsp");
         dispatcher.forward(request, response);
     }
 
