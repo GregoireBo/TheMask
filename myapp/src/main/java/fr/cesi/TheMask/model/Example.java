@@ -1,8 +1,26 @@
 package fr.cesi.TheMask.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Example {
+
+   @Id
+   @GeneratedValue()
+   private int id;
+
    private String text1;
    private String text2;
+
+   public int getId() {
+       return this.id;
+    }
+
+    public void setId(final int id) {
+       this.id = id;
+    }
 
     public String getText1() {
        return this.text1;
