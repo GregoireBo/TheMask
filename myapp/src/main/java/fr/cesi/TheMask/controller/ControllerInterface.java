@@ -5,7 +5,7 @@ import java.util.Collection;
 public interface ControllerInterface<T> {
     /**
      * Permet de récupérer tout les éléments.
-     * @return une listé d'éléments
+     * @return une liste d'éléments
      */
     Collection<T> getAll();
 

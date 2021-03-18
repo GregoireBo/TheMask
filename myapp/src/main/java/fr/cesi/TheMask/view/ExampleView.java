@@ -1,6 +1,5 @@
 package fr.cesi.TheMask.view;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 
 @WebServlet("/Example")
-public class ExampleView extends ViewBase {
+public class ExampleView extends ViewBase implements ViewInterface {
 
   static final long serialVersionUID = -1;
   private ExampleController exampleController;
@@ -23,19 +22,27 @@ public class ExampleView extends ViewBase {
     this.exampleController = new ExampleController();
   }
 
-  /**
-   * Permet d'executer une requête post ou get.
+    /**
+   * Commentaire javadoc de doGet.
+   * doGet permet d'intercepter les requêtes GET
    * @param request Contient une requête du protocole HTTP
    * @param response Contient la résponse d'une requête HTTP
    */
-  @Override
-  protected void processRequest(
+  public void doGet(
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
+      this.processRequest("views/Example.jsp", request, response);
+    }
 
-      request.setAttribute("ExampleListAttribute", this.exampleController.getAll());
-      RequestDispatcher dispatcher = request.getRequestDispatcher(
-        "views/Example.jsp");
-      dispatcher.forward(request, response);
-  }
+  /**
+   * Commentaire javadoc de doPost.
+   * doPost permet d'intercepter les requêtes POST
+   * @param request Contient une requête du protocole HTTP
+   * @param response Contient la résponse d'une requête HTTP
+   */
+  public void doPost(
+    final HttpServletRequest request, final HttpServletResponse response)
+    throws ServletException, IOException {
+      this.processRequest("views/Example.jsp", request, response);
+    }
 }

@@ -1,0 +1,88 @@
+package fr.cesi.TheMask.model;
+
+import java.util.Collection;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Article {
+
+   @Id
+   @GeneratedValue()
+   private int id;
+
+   @ManyToOne
+   @JoinColumn(name = "person_id")
+   private Person person;
+
+   private String name;
+   private String descrit;
+   private String size;
+   private byte[] picture;
+
+   @OneToMany
+   private Collection<Review> reviews;
+
+   public int getId() {
+      return this.id;
+   }
+
+   public void setId(final int id) {
+      this.id = id;
+   }
+
+   public Person getPerson() {
+      return this.person;
+   }
+
+   public void setPerson(final Person person) {
+      this.person = person;
+   }
+
+   public String getName() {
+      return this.name;
+   }
+
+   public void setName(final String name) {
+      this.name = name;
+   }
+
+   public String getDescript() {
+      return this.descrit;
+   }
+
+   public void setDescript(final String descrit) {
+      this.descrit = descrit;
+   }
+
+   public String getSize() {
+      return this.size;
+   }
+
+   public void setSize(final String size) {
+      this.size = size;
+   }
+
+   public byte[] getPicture() {
+      return this.picture;
+   }
+
+   public void setPicture(final byte[] picture) {
+      this.picture = picture;
+   }
+
+   public Collection<Review> getReviews() {
+      return this.reviews;
+   }
+
+   public void setReviews(final Collection<Review> reviews) {
+      this.reviews = reviews;
+   }
+
+
+ }

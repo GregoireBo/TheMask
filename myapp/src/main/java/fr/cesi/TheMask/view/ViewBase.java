@@ -10,46 +10,24 @@ import java.io.IOException;
 public class ViewBase extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
+  protected static final String DEFAULT_PATH = "/myapp";
+  protected static final String ATTRIBUTE_USER = "PersonConnected";
 
     /**
      * Permet d'executer une requête post ou get.
+     * @param fileName Nom du fichier à execuer
      * @param request Contient une requête du protocole HTTP
      * @param response Contient la résponse d'une requête HTTP
      */
     protected void processRequest(
+      final String fileName,
       final HttpServletRequest request, final HttpServletResponse response)
       throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(
-          "views/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(fileName);
+        request.setAttribute("Title", "The mask");
         dispatcher.forward(request, response);
     }
 
-    /**
-     * Commentaire javadoc de doGet.
-     * doGet permet d'intercepter les requêtes GET
-     * @param request Contient une requête du protocole HTTP
-     * @param response Contient la résponse d'une requête HTTP
-     */
-    @Override
-    protected void doGet(
-      final HttpServletRequest request, final HttpServletResponse response)
-      throws ServletException, IOException {
 
-        processRequest(request, response);
-    }
-
-    /**
-     * Commentaire javadoc de doPost.
-     * doPost permet d'intercepter les requêtes POST
-     * @param request Contient une requête du protocole HTTP
-     * @param response Contient la résponse d'une requête HTTP
-     */
-    @Override
-    protected void doPost(
-      final HttpServletRequest request, final HttpServletResponse response)
-      throws ServletException, IOException {
-
-        processRequest(request, response);
-    }
 }
