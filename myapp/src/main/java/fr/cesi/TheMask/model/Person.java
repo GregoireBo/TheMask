@@ -31,76 +31,83 @@ public class Person {
    @OneToOne
    private Cart cart;
 
-   public int getId() {
-       return this.id;
-   }
+   /**
+    * Constructeur.
+    */
+    public Person() {
+        this.id = 0;
+    }
 
-   public void setId(final int id) {
-       this.id = id;
-   }
+    public int getId() {
+        return this.id;
+    }
 
-   public boolean isIsAdmin() {
-       return this.isAdmin;
-   }
+    public void setId(final int id) {
+        this.id = id;
+    }
 
-   public void setIsAdmin(final boolean isAdmin) {
-       this.isAdmin = isAdmin;
-   }
+    public boolean isIsAdmin() {
+        return this.isAdmin;
+    }
 
-   public String getPhoneNumber() {
-       return this.phoneNumber;
-   }
+    public void setIsAdmin(final boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 
-   public void setPhoneNumber(final String phoneNumber) {
-       this.phoneNumber = phoneNumber;
-   }
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
 
-   public String getFirstName() {
-       return this.firstName;
-   }
+    public void setPhoneNumber(final String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-   public void setFirstName(final String firstName) {
-       this.firstName = firstName;
-   }
+    public String getFirstName() {
+        return this.firstName;
+    }
 
-   public String getLastName() {
-       return this.lastName;
-   }
+    public void setFirstName(final String firstName) {
+        this.firstName = firstName;
+    }
 
-   public void setLastName(final String lastName) {
-       this.lastName = lastName;
-   }
+    public String getLastName() {
+        return this.lastName;
+    }
 
-   public String getEmail() {
-       return this.email;
-   }
+    public void setLastName(final String lastName) {
+        this.lastName = lastName;
+    }
 
-   public void setEmail(final String email) {
-       this.email = email;
-   }
+    public String getEmail() {
+        return this.email;
+    }
 
-   public String getPassword() {
-       return this.password;
-   }
+    public void setEmail(final String email) {
+        this.email = email;
+    }
 
-   public void setPassword(final String password) {
-       this.password = password;
-   }
+    public String getPassword() {
+        return this.password;
+    }
 
-   public Address getAddress() {
-       return this.address;
-   }
+    public void setPassword(final String password) {
+        this.password = password;
+    }
 
-   public void setAddress(final Address address) {
-       this.address = address;
-   }
+    public Address getAddress() {
+        return this.address;
+    }
 
-   public Cart getCart() {
-       return this.cart;
-   }
+    public void setAddress(final Address address) {
+        this.address = address;
+    }
 
-   public void setCart(final Cart cart) {
-       this.cart = cart;
-   }
+    public Cart getCart() {
+        return this.cart;
+    }
+
+    public void setCart(final Cart cart) {
+        this.cart = cart;
+    }
 
  }

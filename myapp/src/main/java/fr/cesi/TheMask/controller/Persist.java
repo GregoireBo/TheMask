@@ -1,5 +1,8 @@
 package fr.cesi.TheMask.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
@@ -9,12 +12,15 @@ import javax.persistence.Persistence;
  */
 public class Persist<T> {
     private EntityManager entityManager;
-
+    private List<String> errorMessage;
+    private List<String> infoMessage;
 
     /**
      * Constructeur de la classe persist, alimente le membre entityManager pour accéder à la base.
      */
     public Persist() {
+        this.errorMessage = new ArrayList<String>();
+        this.infoMessage = new ArrayList<String>();
         this.entityManager = Persistence.createEntityManagerFactory("pu").createEntityManager();
     }
 
@@ -37,5 +43,29 @@ public class Persist<T> {
      */
     protected EntityManager getEntityManager() {
         return this.entityManager;
+    }
+
+    public List<String> getErrorMessage() {
+        return this.errorMessage;
+    }
+
+    public List<String> getInfoMessage() {
+        return this.infoMessage;
+    }
+
+    protected void addError(final String mess) {
+        this.errorMessage.add(mess);
+    }
+
+    protected void addInfo(final String mess) {
+        this.infoMessage.add(mess);
+    }
+
+    protected void clearError() {
+        this.errorMessage.clear();
+    }
+
+    protected void clearInfo() {
+        this.infoMessage.clear();
     }
 }
