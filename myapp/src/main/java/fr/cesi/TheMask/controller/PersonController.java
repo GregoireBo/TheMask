@@ -46,6 +46,44 @@ public class PersonController extends Persist<Person> implements ControllerInter
     }
 
     /**
+     * Permet de vérifier la connexion d'un utilisateur.
+     * @param person
+     * @return un utilisateur ou null
+     */
+    public Person verifConnection(final Person person) {
+        this.clearError();
+        this.clearInfo();
+        boolean controlOK = true;
+
+        if (person.getEmail() == "") {
+            this.addError("L'email est obligatoire");
+            controlOK = false;
+        }
+        if (person.getPassword() == "") {
+            this.addError("Le mot de passe est obligatoire");
+            controlOK = false;
+        }
+        if (!controlOK) {
+            return null;
+        }
+
+
+        EntityManager em = getEntityManager();
+        TypedQuery<Person> q =
+            em.createQuery("SELECT p FROM Person p WHERE p.email = ?1 "
+                            + "AND p.password = ?2", Person.class);
+            q.setParameter(1, person.getEmail());
+            q.setParameter(2, person.getPassword());
+
+        if (q.getResultList().isEmpty()) {
+            this.addError("L'email et le mot de passe ne correspondent pas");
+            return null;
+        } else {
+            return q.getSingleResult();
+        }
+    }
+
+    /**
      * Permet d'inscrire un utilisateur après avoir fait tout les controlles nécéssaires.
      * @param person objet utilisateur à enregistrer
      * @return true si réussi, false sinon

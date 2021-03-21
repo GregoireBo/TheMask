@@ -10,8 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 
-@WebServlet("/Signup")
-public class SignupView extends ViewBase implements ViewInterface  {
+@WebServlet("/Signin")
+public class SigninView extends ViewBase implements ViewInterface  {
 
   static final long serialVersionUID = -1;
   private PersonController personController;
@@ -19,7 +19,7 @@ public class SignupView extends ViewBase implements ViewInterface  {
   /**
    * Constructor.
    */
-  public SignupView() {
+  public SigninView() {
     this.personController = new PersonController();
   }
 
@@ -32,7 +32,7 @@ public class SignupView extends ViewBase implements ViewInterface  {
   public void doGet(
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
-      this.processRequest("views/Signup.jsp", request, response);
+      this.processRequest("views/Signin.jsp", request, response);
     }
 
   /**
@@ -45,20 +45,16 @@ public class SignupView extends ViewBase implements ViewInterface  {
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
       Person person = new Person();
-      person.setFirstName(request.getParameter("firstName"));
-      person.setLastName(request.getParameter("lastName"));
       person.setEmail(request.getParameter("email"));
       person.setPassword(request.getParameter("password"));
 
-      Person personSaved = personController.inscript(person);
+      Person personSaved = personController.verifConnection(person);
 
       if (personSaved == null) {
-        request.setAttribute("firstName", person.getFirstName());
-        request.setAttribute("lastName", person.getLastName());
         request.setAttribute("email", person.getEmail());
         request.setAttribute("password", person.getPassword());
         request.setAttribute("ErrorMessageList", personController.getErrorMessage());
-        this.processRequest("views/Signup.jsp", request, response);
+        this.processRequest("views/Signin.jsp", request, response);
       } else {
         request.getSession().setAttribute(ATTRIBUTE_USER, personSaved);
         response.sendRedirect(DEFAULT_PATH);

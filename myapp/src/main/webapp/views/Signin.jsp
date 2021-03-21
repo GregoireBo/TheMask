@@ -7,24 +7,17 @@
 <html>
     <head>
         ${Bootstrap}
-        <title>${Title} - Sign up</title>
+        <title>${Title} - Sign in</title>
     </head>
     <body>
         <%@include file="Header.jsp" %>
 
-
         <div>
-            <h1>${Title} - Sign up</h1>
+            <h1>${Title} - Sign in</h1>
             <c:forEach var = "errorMessage" items = "${ErrorMessageList}">
                 <div>${errorMessage}</div>
              </c:forEach>
-            
             <form action="" method="POST">
-                <label for="fname">Prénom :</label><br>
-                <input type="text" id="firstName" name="firstName" value="${firstName}"><br>
-
-                <label for="lname">Nom :</label><br>
-                <input type="text" id="lastName" name="lastName" value="${lastName}"><br>
 
                 <label for="email">Mail :</label><br>
                 <input type="email" id="email" name="email" value="${email}"><br>
