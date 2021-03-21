@@ -18,5 +18,7 @@
             Text 2 getter ${example.getText2()}
             <hr>
          </c:forEach>
+
+         Email de l'utilisateur connecté : ${PersonConnected.email}
     </body>
 </html>

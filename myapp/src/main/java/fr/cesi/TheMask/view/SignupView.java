@@ -32,7 +32,11 @@ public class SignupView extends ViewBase implements ViewInterface  {
   public void doGet(
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
-      this.processRequest("views/Signup.jsp", request, response);
+      if (request.getSession().getAttribute(ATTRIBUTE_USER) != null) {
+        response.sendRedirect(DEFAULT_PATH);
+      } else {
+        this.processRequest("views/Signup.jsp", request, response);
+      }
     }
 
   /**
@@ -44,6 +48,10 @@ public class SignupView extends ViewBase implements ViewInterface  {
   public void doPost(
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
+      if (request.getSession().getAttribute(ATTRIBUTE_USER) != null) {
+        return;
+      }
+
       Person person = new Person();
       person.setFirstName(request.getParameter("firstName"));
       person.setLastName(request.getParameter("lastName"));
