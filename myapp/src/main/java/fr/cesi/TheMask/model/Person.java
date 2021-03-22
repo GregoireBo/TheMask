@@ -1,5 +1,6 @@
 package fr.cesi.TheMask.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,11 +25,11 @@ public class Person {
 
    private String password;
 
-   @OneToOne
+   @OneToOne(cascade = CascadeType.ALL)
    @JoinColumn(name = "adress_id")
    private Address address;
 
-   @OneToOne
+   @OneToOne(cascade = CascadeType.ALL)
    private Cart cart;
 
    /**
@@ -108,6 +109,14 @@ public class Person {
 
     public void setCart(final Cart cart) {
         this.cart = cart;
+    }
+
+    /**
+     * Ajoute un article au panier de l'utilisateur.
+     * @param article
+     */
+    public void addArticleToCart(final Article article) {
+        this.cart.addArticle(article);
     }
 
  }
