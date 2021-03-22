@@ -20,5 +20,6 @@
          </c:forEach>
 
          Email de l'utilisateur connecté : ${PersonConnected.email}
+         <img class="fit-picture" src="https://www.garonapromotion.fr/wp-content/uploads/sites/4/2017/12/Image-test-1_large.jpg">
     </body>
 </html>

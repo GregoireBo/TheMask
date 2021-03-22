@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import fr.cesi.TheMask.model.Cart;
 import fr.cesi.TheMask.model.Person;
 
 public class PersonController extends Persist<Person> implements ControllerInterface<Person>  {
@@ -122,6 +123,7 @@ public class PersonController extends Persist<Person> implements ControllerInter
 
         if (controlOK) {
             //Si les controles ont été passés alors on enregistre
+            person.setCart(new Cart());
             personResult = this.save(person);
             this.addInfo("Enregistrement réussi");
         }
