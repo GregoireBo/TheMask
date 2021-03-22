@@ -58,7 +58,7 @@ public class SignupView extends ViewBase implements ViewInterface  {
         request.setAttribute("email", person.getEmail());
         request.setAttribute("password", person.getPassword());
         request.setAttribute("ErrorMessageList", personController.getErrorMessage());
-        this.processRequest("views/Signup.jsp", request, response);
+        this.processRequest("vie  ws/Signup.jsp", request, response);
       } else {
         request.getSession().setAttribute(ATTRIBUTE_USER, personSaved);
         response.sendRedirect(DEFAULT_PATH);
