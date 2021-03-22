@@ -94,9 +94,9 @@
                     
                     <div class="col-2">
                       <select class="form-control">
-                        <option>Featured</option>
-                        <option>Recently Added</option>
-                        <option>Next Upcoming Session</option>
+                        <option>Les plus en vogues</option>
+                        <option>Les moins chers</option>
+                        <option>Les plus chers</option>
                         <option>A-Z</option>
                         <option>Z-A</option>
                       </select>
