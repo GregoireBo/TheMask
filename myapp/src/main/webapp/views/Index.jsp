@@ -9,6 +9,22 @@
     <head>
 
         <style>
+            .pagination > li > a:focus,
+            .pagination > li > a:hover,
+            .pagination > li > span:focus,
+            .pagination > li > span:hover,
+            .pagination > .active > .page-link {
+                z-index: 3;
+                color: #23527c;
+                background-color: green !important;
+                border-color: #ddd !important;
+            }
+
+            .pagination > .active > .page-link { 
+                z-index:3;         
+                background-color:green !important
+            }
+
         #carouselIndex
         {
             margin-bottom: 10px;
@@ -75,7 +91,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Recherche" name="srch-term" id="srch-term">
                         <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>
+                            <button class="btn btn-default" type="submit"><i class="fas fa-search"></i>
                             </button>
                         </div>
                     </div>
@@ -83,7 +99,7 @@
                     <hr>
                     <ul class="list-group list-group">
                         <h4 class="">Categories</h4>
-                        <div><a href="#" class="list-group-item"><span class="badge rounded-pill bg-secondary">X</span> CAT_1 <span class="badge bg-primary">New</span></a></div>
+                        <div><a href="#" class="list-group-item"><span class="badge rounded-pill bg-secondary">X</span> CAT_1 <span class="badge bg-success">New</span></a></div>
                         <div><a href="#" class="list-group-item"><span class="badge rounded-pill bg-secondary">X</span> CAT_2</a>	</div>
                     </ul>
                     
@@ -92,7 +108,7 @@
               <div class="col-9">
                   <div class="row">
                     
-                    <div class="col-2">
+                    <div class="col-3">
                       <select class="form-control">
                         <option>Les plus en vogues</option>
                         <option>Les moins chers</option>
@@ -102,11 +118,11 @@
                       </select>
                     </div>
                     
-                    <div class="col-10">
+                    <div class="col-9">
                       <div class="btn-group float-end">
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-th"></span></button>
-                        <button type="button" class="btn btn-default active"><span class="glyphicon glyphicon-th-list"></span></button>
-                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-list"></span></button>
+                        <button type="button" class="btn btn-outline-success"><i class="fas fa-th"></i></button>
+                        <button type="button" class="btn btn-outline-success active"><i class="fas fa-th-list"></i></button>
+                        <button type="button" class="btn btn-outline-success"><i class="fas fa-list"></i></button>
                         
                       </div>
                     </div>
@@ -121,7 +137,7 @@
                   </div>
                   <div class="col-8">
                     <h3 class="title">MASQUE_X</h3>
-                    <p class="text-muted"><span class="glyphicon glyphicon-euro"></span> XX</p>
+                    <p class="text-muted"><span class="fas fa-euro-sign"></span> XX</p>
                     <p>DESCRIPTION_MASQUE_X</p>
                     
                     <p class="text-muted"><a href="#">AJOUTER_MASQUE_X</a></p>
