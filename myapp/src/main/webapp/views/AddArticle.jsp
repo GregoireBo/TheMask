@@ -17,7 +17,7 @@
                         <div>${errorMessage}</div>
                     </c:forEach>
 
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <label for="name">Nom :</label><br>
                         <input type="text" id="name" name="name" value="${name}"><br>
 
@@ -25,18 +25,16 @@
                         <input type="text" id="descr" name="descr" value="${descr}"><br>
 
                         <label for="size">Size :</label><br>
-                        <select name="size" id="pet-select">
+                        <select name="size" id="size-select">
                             <option value="">--Please choose a size--</option>
                             <option value="S">S</option>
                             <option value="M">M</option>
                             <option value="L">L</option>
                             <option value="XL">XL</option>
                         </select><br>
-                        
-                        <form action="" method="POST" enctype="multipart/form-data">
-                            <label for="img">Image :</label><br>
-                            <input type = "file" name = "img"/><br>
-                        </form>
+                        <label for="fichier">Photo</label>
+                        <input type="file" id="fichier" name="fichier" /><br>
+
                         <button type="submit">Valider</button>
                     </form>
                 </div>
