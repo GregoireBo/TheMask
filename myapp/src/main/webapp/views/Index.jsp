@@ -20,11 +20,6 @@
                 border-color: #ddd !important;
             }
 
-            .pagination > .active > .page-link { 
-                z-index:3;         
-                background-color:green !important
-            }
-
         #carouselIndex
         {
             margin-bottom: 10px;
