@@ -86,5 +86,8 @@ public class AddArticleView extends ViewBase implements ViewInterface {
     // note that you probably don't want to do this in real life!
     // upload it to a file host like S3 or GCS instead
     File fileToSave = new File("WebContent/uploaded-files/" + filePart.getSubmittedFileName());
+  
+    byte[] targetArray = new byte[fileInputStream.available()];
+    fileInputStream.read(targetArray);
   }
 }
