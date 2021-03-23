@@ -8,32 +8,40 @@
     <head>
         ${Bootstrap}
         <title>${Title} - Sign up</title>
+        <link rel="stylesheet" href="CSS/signin.css">
     </head>
     <body>
         <%@include file="Header.jsp" %>
 
 
-        <div>
-            <h1>${Title} - Sign up</h1>
+        <div class="container">
+            <div class="row">
+              <div class="col-sm">
+            <center><div class="card" style="width: 400px; margin-top:30px;">
+                <center><img src="img/logo.png" class="card-img-top signin_img" /></center>
+                <div class="card-body">
+                  <h5 class="card-title">${Title} - Enregistrez-vous !</h5>
+                  <p class="card-text">Bienvenue sur The Mask ! Merci d'entrer vos informations ci-dessous pour vous inscrire sur notre site de vente et échange de masques ! <br />
+                Avec The Mask, Protégez-vous du COVID !</p>
             <c:forEach var = "errorMessage" items = "${ErrorMessageList}">
                 <div>${errorMessage}</div>
              </c:forEach>
             
             <form action="" method="POST">
-                <label for="fname">Prénom :</label><br>
-                <input type="text" id="firstName" name="firstName" value="${firstName}"><br>
+                <label for="fname" class="formcss">Prénom :</label>
+                <input type="text" id="firstName" name="firstName" value="${firstName}" class="form-control"><br>
 
-                <label for="lname">Nom :</label><br>
-                <input type="text" id="lastName" name="lastName" value="${lastName}"><br>
+                <label for="lname" class="formcss">Nom :</label>
+                <input type="text" id="lastName" name="lastName" value="${lastName}" class="form-control"><br>
 
-                <label for="email">Mail :</label><br>
-                <input type="email" id="email" name="email" value="${email}"><br>
+                <label for="email" class="formcss">Mail :</label>
+                <input type="email" id="email" name="email" value="${email}" class="form-control"><br>
 
-                <label for="password">Password :</label><br>
-                <input type="password" id="password" name="password" value="${password}"><br>
+                <label for="password" class="formcss">Password :</label>
+                <input type="password" id="password" name="password" value="${password}" class="form-control"><br /><br />
 
-                <button type="submit">Valider</button>
+                <button type="submit" class="btn btn-success">Valider</button>
               </form>
-        </div>
+        </div></div></center></div></div></div>
     </body>
     </html>

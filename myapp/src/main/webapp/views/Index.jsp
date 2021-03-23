@@ -3,7 +3,8 @@
   xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
         <meta charset="utf-8"/>
-        <title>Index page</title>
+        <link rel="stylesheet" href="CSS/index.css">
+        <title>Index</title>
     </h:head>
     <h:body>
         <div>
