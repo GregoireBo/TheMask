@@ -21,7 +21,7 @@ public class CartView extends ViewBase implements ViewInterface {
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
         if (request.getSession().getAttribute(ATTRIBUTE_USER) == null) {
-            response.sendRedirect(DEFAULT_PATH);
+            response.sendRedirect(DEFAULT_PATH + "/Index");
           } else {
             this.processRequest("views/Cart.jsp", request, response);
           }

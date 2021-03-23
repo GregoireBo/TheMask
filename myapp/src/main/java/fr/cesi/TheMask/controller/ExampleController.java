@@ -11,6 +11,10 @@ import java.util.Collection;
 
 public class ExampleController extends Persist<Example> implements ControllerInterface<Example>  {
 
+    protected void finalize() throws Throwable {
+        super.finalize();
+    }
+
 
     public static final int MIN = 100;
     public static final int MAX = 999;

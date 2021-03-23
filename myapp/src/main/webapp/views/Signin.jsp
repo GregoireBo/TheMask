@@ -26,10 +26,10 @@
             <form action="" method="POST">
 
               <label for="email" class="formcss">E-mail :</label>
-              <input type="email" id="email" name="email" value="${email}"><br><br />
+              <input type="email" id="email" name="email" value="${email}"><br>
 
               <label for="password" class="formcss">Password :</label>
-              <input type="password" id="password" name="password" value="${password}"><br /><br />
+              <input type="password" id="password" name="password" value="${password}"><br>
 
                 <button type="submit" class="btn btn-success" >Valider</button>
               </form>

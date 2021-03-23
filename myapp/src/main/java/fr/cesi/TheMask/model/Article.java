@@ -1,5 +1,6 @@
 package fr.cesi.TheMask.model;
 
+import org.apache.commons.codec.binary.Base64;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -85,5 +86,11 @@ public class Article {
       this.reviews = reviews;
    }
 
-
+   /**
+    * Permet de récupérer l'image au format string base64.
+    * @return string
+    */
+   public String getPictureString() {
+      return Base64.encodeBase64String(this.getPicture());
+   }
  }

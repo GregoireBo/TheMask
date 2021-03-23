@@ -11,18 +11,23 @@
     </head>
     <body>
         <%@include file="Header.jsp" %>
-        <div class="col-6 offset-3 mt-2">
+        <div class="col-6 offset-3">
             <div class="list-group">
-                <c:forEach var = "article" items = "${PersonConnected.cart.articles}">
-                    <div class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                          <h5 class="mb-1">${article.name}</h5>
-                          <i class="fas fa-trash-alt"></i>
-                        </div>
-                        <p class="mb-1">${article.descript}</p>
+                <c:forEach var = "article" items = "${PersonConnected.cart.articles}"> <!-- A modifier -->
+                    <div class="row border rounded mt-2 p-2">
+
+                      <div class="col-5">
+                          <a href="${DefaultPath}/Article?id=${article.id}"><img src="data:image/png;base64,${article.getPictureString()}" class="img-fluid"></a>
+                      </div>
+                      <div class="col-7">
+                        <h3 class="title">${article.name}</h3>
+                        <p class="text-muted"><span class="fas fa-euro-sign"></span> Gratuit</p>
+                        <p>${article.descript}</p>
+                      </div>
                     </div>
-                </c:forEach>
-                <c:if test="${PersonConnected.cart.articles.size() gt 0}">
+                    <hr>
+                  </c:forEach>
+                <c:if test="${PersonConnected.cart.articles.size() le 0}">
                     Pas d'articles dans le panier.
                 </c:if>
               </div>

@@ -33,7 +33,7 @@ public class SignupView extends ViewBase implements ViewInterface  {
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
       if (request.getSession().getAttribute(ATTRIBUTE_USER) != null) {
-        response.sendRedirect(DEFAULT_PATH);
+        response.sendRedirect(DEFAULT_PATH + "/Index");
       } else {
         this.processRequest("views/Signup.jsp", request, response);
       }
@@ -69,7 +69,7 @@ public class SignupView extends ViewBase implements ViewInterface  {
         this.processRequest("vie  ws/Signup.jsp", request, response);
       } else {
         request.getSession().setAttribute(ATTRIBUTE_USER, personSaved);
-        response.sendRedirect(DEFAULT_PATH);
+        response.sendRedirect(DEFAULT_PATH + "/Index");
       }
     }
 }

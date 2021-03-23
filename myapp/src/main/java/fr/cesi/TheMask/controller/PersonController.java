@@ -10,6 +10,10 @@ import fr.cesi.TheMask.model.Person;
 
 public class PersonController extends Persist<Person> implements ControllerInterface<Person>  {
 
+    protected void finalize() throws Throwable {
+        super.finalize();
+    }
+
     @Override
     public Collection<Person> getAll() {
         EntityManager em = getEntityManager();

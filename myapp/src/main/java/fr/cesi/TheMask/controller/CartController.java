@@ -11,6 +11,10 @@ import javax.persistence.TypedQuery;
 
 
 public class CartController extends Persist<Cart> implements ControllerInterface<Cart>  {
+
+    protected void finalize() throws Throwable {
+        super.finalize();
+    }
     /**
      * Permet d'ajouter un article au panier d'un utilisateur.
      * @param person person auquel on va ajouter l'article
@@ -22,16 +26,22 @@ public class CartController extends Persist<Cart> implements ControllerInterface
             person.setCart(new Cart());
         }
 
-        ArticleController articleController = new ArticleController();
-        Article article = articleController.get(articleId);
-        if (article != null) {
-            person.addArticleToCart(article);
-            personController.save(person);
-            return true;
+        if (checkIfExistInCart(person.getCart().getId(), articleId)) {
+            ArticleController articleController = new ArticleController();
+            Article article = articleController.get(articleId);
+            if (article != null) {
+                person.addArticleToCart(article);
+                personController.save(person);
+                return true;
+            } else {
+                this.addError("Article was not found");
+                return false;
+            }
         } else {
-            this.addError("Article was not found");
+            this.addError("L'article existe déjà dans le panier");
             return false;
         }
+
     }
 
     @Override
@@ -46,5 +56,17 @@ public class CartController extends Persist<Cart> implements ControllerInterface
             em.createQuery("SELECT c FROM Cart c WHERE c.id = ?1", Cart.class);
         q.setParameter(1, id);
         return q.getSingleResult();
+    }
+
+    private boolean checkIfExistInCart(final int cartId, final int articleId) {
+        EntityManager em = getEntityManager();
+        TypedQuery<Integer> q =
+            em.createQuery("SELECT c.id FROM Cart c"
+            + " inner join c.articles a"
+            + " WHERE c.id = ?1 AND a.id = ?2", Integer.class);
+        q.setParameter(1, cartId);
+        q.setParameter(2, articleId);
+
+        return q.getResultList().isEmpty();
     }
 }

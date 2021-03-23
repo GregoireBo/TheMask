@@ -15,6 +15,14 @@ public class Persist<T> {
     private List<String> errorMessage;
     private List<String> infoMessage;
 
+    protected void finalize() throws Throwable {
+         try {
+            entityManager.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Constructeur de la classe persist, alimente le membre entityManager pour accéder à la base.
      */

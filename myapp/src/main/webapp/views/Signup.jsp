@@ -38,7 +38,7 @@
                 <input type="email" id="email" name="email" value="${email}" class="form-control"><br>
 
                 <label for="password" class="formcss">Password :</label>
-                <input type="password" id="password" name="password" value="${password}" class="form-control"><br /><br />
+                <input type="password" id="password" name="password" value="${password}" class="form-control"><br>
 
                 <button type="submit" class="btn btn-success">Valider</button>
               </form>

@@ -9,6 +9,10 @@ import fr.cesi.TheMask.model.Article;
 
 public class ArticleController extends Persist<Article> implements ControllerInterface<Article>  {
 
+    protected void finalize() throws Throwable {
+        super.finalize();
+    }
+
     @Override
     public Collection<Article> getAll() {
         EntityManager em = getEntityManager();

@@ -28,7 +28,7 @@ public class DisconnectView extends ViewBase implements ViewInterface {
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
         request.getSession().removeAttribute(ATTRIBUTE_USER);
-        response.sendRedirect(DEFAULT_PATH);
+        response.sendRedirect(DEFAULT_PATH + "/Index");
     }
 
   /**

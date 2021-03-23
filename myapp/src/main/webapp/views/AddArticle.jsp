@@ -4,28 +4,34 @@
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
-            <html>
+<html>
 
-            <head>
-                <title>${Title} - AddArticle</title>
-            </head>
+    <head>
+        ${Bootstrap}
+        <title>${Title} - Ajout d'article</title>
+    </head>
 
-            <body>
-                <div>
-                    <h1>${Title} - AddArticle</h1>
-                    <c:forEach var="errorMessage" items="${ErrorMessageList}">
-                        <div>${errorMessage}</div>
-                    </c:forEach>
+    <body>
+        <%@include file="Header.jsp" %>
+        <div class="container">
+            <div>
+                <h1>${Title} - Ajout d'article</h1>
+            </div>
+            <div class="row col-12">
+                <c:forEach var="errorMessage" items="${ErrorMessageList}">
+                    <div>${errorMessage}</div>
+                </c:forEach>
 
-                    <form action="" method="POST" enctype="multipart/form-data">
+                <form class="col-12" action="" method="POST" enctype="multipart/form-data">
+                    <div class="form-group col-12">
                         <label for="name">Nom :</label><br>
-                        <input type="text" id="name" name="name" value="${name}"><br>
+                        <input class="form-control" type="text" id="name" name="name" value="${name}"><br>
 
                         <label for="descr">Description :</label><br>
-                        <input type="text" id="descr" name="descr" value="${descr}"><br>
+                        <textarea class="form-control" id="descr" name="descr">${descr}</textarea><br>
 
                         <label for="size">Size :</label><br>
-                        <select name="size" id="size-select">
+                        <select class="form-control" name="size" id="size-select">
                             <option value="">--Please choose a size--</option>
                             <option value="S">S</option>
                             <option value="M">M</option>
@@ -33,11 +39,12 @@
                             <option value="XL">XL</option>
                         </select><br>
                         <label for="fichier">Photo</label>
-                        <input type="file" id="fichier" name="fichier" /><br>
+                        <input class="form-control" type="file" id="fichier" name="fichier" /><br>
 
-                        <button type="submit">Valider</button>
-                    </form>
-                </div>
-            </body>
-
-            </html>
+                        <button class="form-control btn btn-success" type="submit">Valider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import fr.cesi.TheMask.controller.ArticleController;
 
 @WebServlet("/Index")
 public class IndexView extends ViewBase implements ViewInterface {
@@ -20,6 +21,8 @@ public class IndexView extends ViewBase implements ViewInterface {
     public void doGet(
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
+        ArticleController articleController = new ArticleController();
+        request.setAttribute("listArticles", articleController.getAll());
         this.processRequest("views/Index.jsp", request, response);
     }
 
@@ -32,6 +35,6 @@ public class IndexView extends ViewBase implements ViewInterface {
     public void doPost(
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
-        this.processRequest("views/Index.jsp", request, response);
+        this.doGet(request, response);
     }
 }
