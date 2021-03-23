@@ -3,26 +3,22 @@ package fr.cesi.TheMask.view;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import fr.cesi.TheMask.controller.ExampleController;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 
-@WebServlet("/Example")
-public class ExampleView extends ViewBase implements ViewInterface {
+@WebServlet("/Disconnect")
+public class DisconnectView extends ViewBase implements ViewInterface {
 
   static final long serialVersionUID = -1;
-  //private ExampleController exampleController;
 
   /**
    * Constructor.
    */
-  public ExampleView() {
-    //this.exampleController = new ExampleController();
+  public DisconnectView() {
   }
 
-  /**
+    /**
    * Commentaire javadoc de doGet.
    * doGet permet d'intercepter les requêtes GET
    * @param request Contient une requête du protocole HTTP
@@ -31,7 +27,8 @@ public class ExampleView extends ViewBase implements ViewInterface {
   public void doGet(
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
-      this.processRequest("views/Example.jsp", request, response);
+        request.getSession().removeAttribute(ATTRIBUTE_USER);
+        response.sendRedirect(DEFAULT_PATH);
     }
 
   /**
@@ -43,6 +40,6 @@ public class ExampleView extends ViewBase implements ViewInterface {
   public void doPost(
     final HttpServletRequest request, final HttpServletResponse response)
     throws ServletException, IOException {
-      this.processRequest("views/Example.jsp", request, response);
+      this.doGet(request, response);
     }
 }

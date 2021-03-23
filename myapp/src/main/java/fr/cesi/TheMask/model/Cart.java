@@ -2,6 +2,7 @@ package fr.cesi.TheMask.model;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,7 +16,7 @@ public class Cart {
    @GeneratedValue()
    private int id;
 
-   @ManyToMany
+   @ManyToMany(cascade = CascadeType.ALL)
    private Collection<Article> articles;
 
    public int getId() {
@@ -32,6 +33,14 @@ public class Cart {
 
    public void setArticles(final Collection<Article> articles) {
        this.articles = articles;
+   }
+
+   /**
+    * Ajoute un article au panier.
+    * @param article
+    */
+   public void addArticle(final Article article) {
+       this.articles.add(article);
    }
 
  }

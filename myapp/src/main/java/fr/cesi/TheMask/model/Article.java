@@ -2,6 +2,7 @@ package fr.cesi.TheMask.model;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ public class Article {
    @GeneratedValue()
    private int id;
 
-   @ManyToOne
+   @ManyToOne(cascade = CascadeType.ALL)
    @JoinColumn(name = "person_id")
    private Person person;
 
