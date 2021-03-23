@@ -7,26 +7,35 @@
 <html>
     <head>
         ${Bootstrap}
-        <title>${Title} - Sign in</title>
+        <title>${Title} - Sign in</title> 
+        <link rel="stylesheet" href="CSS/signin.css">
     </head>
     <body>
         <%@include file="Header.jsp" %>
-
-        <div>
-            <h1>${Title} - Sign in</h1>
+        <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <center><div class="card" style="width: 400px; margin-top:30px;">
+                <center><img src="img/logo.png" class="card-img-top signin_img" /></center>
+                <div class="card-body">
+                  <h5 class="card-title">${Title} - Connectez-vous</h5>
+                  <p class="card-text">En cas d'oubli de votre mot de passe, merci d'envoyer un email à contact@themask.com</p>
             <c:forEach var = "errorMessage" items = "${ErrorMessageList}">
                 <div>${errorMessage}</div>
              </c:forEach>
             <form action="" method="POST">
 
-                <label for="email">Mail :</label><br>
-                <input type="email" id="email" name="email" value="${email}"><br>
+              <label for="email" class="formcss">E-mail :</label>
+              <input type="email" id="email" name="email" value="${email}"><br><br />
 
-                <label for="password">Password :</label><br>
-                <input type="password" id="password" name="password" value="${password}"><br>
+              <label for="password" class="formcss">Password :</label>
+              <input type="password" id="password" name="password" value="${password}"><br /><br />
 
-                <button type="submit">Valider</button>
+                <button type="submit" class="btn btn-success" >Valider</button>
               </form>
-        </div>
+              </div></div></center>
+            </div>
+          </div>
+          </div>
     </body>
 </html>
