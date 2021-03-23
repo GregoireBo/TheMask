@@ -78,6 +78,7 @@
 
           <div class="container">
             <div class="row">
+              <!--
               <div class="col-md-3">
                 
                     
@@ -100,10 +101,12 @@
                     
 
               </div>
-              <div class="col-9">
+              -->
+              <div class="col-12">
                   <div class="row">
                     
                     <div class="col-3">
+                    <!--
                       <select class="form-control">
                         <option>Les plus en vogues</option>
                         <option>Les moins chers</option>
@@ -111,13 +114,13 @@
                         <option>A-Z</option>
                         <option>Z-A</option>
                       </select>
-                    </div>
-                    
+                    -->
+                  </div>
                     <div class="col-9">
                       <div class="btn-group float-end">
-                        <button type="button" class="btn btn-outline-success"><i class="fas fa-th"></i></button>
+                       <!-- <button type="button" class="btn btn-outline-success"><i class="fas fa-th"></i></button>-->
                         <button type="button" class="btn btn-outline-success active"><i class="fas fa-th-list"></i></button>
-                        <button type="button" class="btn btn-outline-success"><i class="fas fa-list"></i></button>
+                        <!-- <button type="button" class="btn btn-outline-success"><i class="fas fa-list"></i></button> -->
                         
                       </div>
                     </div>
@@ -126,30 +129,36 @@
                 <hr>
                 
                 
-                <div class="row">
-                  <div class="col-4">
-                      <a href="#" class=""><img src="http://placehold.it/1280X720" class="img-fluid"></a>
+                  <c:forEach var = "article" items = "${listArticles}"> <!-- A modifier -->
+                  <div class="row">
+
+                    <div class="col-5">
+                        <a href="${DefaultPath}/Article?id=${article.id}"><img src="http://placehold.it/1280X720" class="img-fluid"></a>
+                    </div>
+                    <div class="col-7">
+                      <h3 class="title">${article.name}</h3>
+                      <p class="text-muted"><span class="fas fa-euro-sign"></span> Gratuit</p>
+                      <p>${article.descript}</p>
+                      
+                      <p class="text-muted"><a href="${DefaultPath}/AddArticleToCart?articleId=${article.id}">AJOUTER_MASQUE_X</a></p>
+                      
+                    </div>
                   </div>
-                  <div class="col-8">
-                    <h3 class="title">MASQUE_X</h3>
-                    <p class="text-muted"><span class="fas fa-euro-sign"></span> XX</p>
-                    <p>DESCRIPTION_MASQUE_X</p>
-                    
-                    <p class="text-muted"><a href="#">AJOUTER_MASQUE_X</a></p>
-                    
-                  </div>
-                </div>
-                <hr>
+                  <hr>
+                  </c:forEach>
+                
+
+
                 
                 
-                
+                <!--
                 <ul class="pagination pagination-sm float-end">
                   <li class="page-item"><a  class="page-link" href="#">«</a></li>
                   <li class="page-item active"><a  class="page-link" href="#">X</a></li>
                   <li class="page-item"><a  class="page-link"href="#">X</a></li>
                   <li class="page-item"><a  class="page-link" href="#">»</a></li>
                 </ul>
-                
+                -->
                 
               </div>
             </div>
