@@ -22,6 +22,9 @@
                         <p class="mb-1">${article.descript}</p>
                     </div>
                 </c:forEach>
+                <c:if test="${PersonConnected.cart.articles.size() gt 0}">
+                    Pas d'articles dans le panier.
+                </c:if>
               </div>
         </div>
     </body>
