@@ -3,7 +3,6 @@ package fr.cesi.TheMask.view;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.codec.binary.Base64;
 
 import fr.cesi.TheMask.controller.ArticleController;
 import fr.cesi.TheMask.model.Article;
@@ -19,7 +18,6 @@ public class ArticleView extends ViewBase implements ViewInterface {
 
   private ArticleController articleController;
   private Article article;
-  private String image;
   /**
    * Constructor.
    */
@@ -37,10 +35,7 @@ public class ArticleView extends ViewBase implements ViewInterface {
       throws ServletException, IOException {
 
     article = this.articleController.get(Integer.parseInt(request.getParameter("id")));
-    image = Base64.encodeBase64String(article.getPicture());
-    System.out.println(image);
     request.setAttribute("article", article);
-    request.setAttribute("image", image);
     this.processRequest("views/Article.jsp", request, response);
   }
 

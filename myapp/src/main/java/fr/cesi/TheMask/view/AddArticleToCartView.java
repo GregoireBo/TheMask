@@ -36,9 +36,25 @@ public class AddArticleToCartView extends ViewBase implements ViewInterface {
       Person personConnected = (Person) request.getSession().getAttribute(ATTRIBUTE_USER);
 
       int articleId = Integer.parseInt(request.getParameter("articleId"));
-      if (personConnected != null && articleId != 0) {
-        cartController.addArticle(personConnected, articleId);
+      String type = request.getParameter("type");
+      Boolean isDelete = false;
+      Boolean isClear = false;
+
+      if (type != null) {
+        isDelete = (type.equals("delete"));
+        isClear = (type.equals("clear"));
       }
+
+      if (personConnected != null && articleId != 0) {
+        if (isDelete) {
+          cartController.deleteArticle(personConnected, articleId);
+        } else if (isClear) {
+          cartController.clearCart(personConnected.getCart());
+        } else {
+          cartController.addArticle(personConnected, articleId);
+        }
+      }
+      response.setHeader("ErrorMessage", cartController.getErrorMessage().toString());
       response.sendRedirect(DEFAULT_PATH + "/Cart");
     }
 

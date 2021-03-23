@@ -43,6 +43,16 @@ public class AddArticleView extends ViewBase implements ViewInterface {
    */
   public void doGet(final HttpServletRequest request, final HttpServletResponse response)
       throws ServletException, IOException {
+      if (request.getSession().getAttribute(ATTRIBUTE_USER) != null) {
+        Person personConnected = (Person) request.getSession().getAttribute(ATTRIBUTE_USER);
+        if (!personConnected.isIsAdmin()) {
+          response.sendRedirect(DEFAULT_PATH + "/Index");
+          return;
+        }
+      } else {
+        response.sendRedirect(DEFAULT_PATH + "/Index");
+        return;
+      }
     this.processRequest("views/AddArticle.jsp", request, response);
   }
 
@@ -54,6 +64,16 @@ public class AddArticleView extends ViewBase implements ViewInterface {
    */
   public void doPost(final HttpServletRequest request, final HttpServletResponse response)
       throws ServletException, IOException {
+    if (request.getSession().getAttribute(ATTRIBUTE_USER) != null) {
+      Person personConnected = (Person) request.getSession().getAttribute(ATTRIBUTE_USER);
+      if (!personConnected.isIsAdmin()) {
+        response.sendRedirect(DEFAULT_PATH + "/Index");
+        return;
+      }
+    } else {
+      response.sendRedirect(DEFAULT_PATH + "/Index");
+      return;
+    }
     Article article = new Article();
     Person author = new Person();
 

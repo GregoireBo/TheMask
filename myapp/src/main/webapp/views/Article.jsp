@@ -16,11 +16,21 @@
             <c:forEach var="errorMessage" items="${ErrorMessageList}">
                 <div>${errorMessage}</div>
             </c:forEach>
-            
-            Nom : ${article.name}<br>
-            Description : ${article.descript}<br>
-            Size : ${article.size}<br>
-            <img src="data:image/png;base64,${image}" alt="Red dot" />
+
+            <div class="card mt-5">
+                <img src="${article.getPictureString()}" alt="Red dot" />
+                <div class="card-body">
+                    <h3>${article.name}</h3>
+                    <p class="card-text">${article.descript}</p>
+                    <p class="card-text">Taille : ${article.size}</p>
+                    <p class="card-text"><span class="fas fa-euro-sign"></span> Gratuit</p>
+                    <p class="text-right">
+                        <c:if test="${not empty PersonConnected}">
+                            <a class="btn btn-success" href="${DefaultPath}/AddArticleToCart?articleId=${article.id}">Ajouter au panier</a>
+                        </c:if>
+                    </p>
+                </div>
+            </div>
         </div>
     </body>
 </html>

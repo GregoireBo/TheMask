@@ -16,7 +16,7 @@ public class Cart {
    @GeneratedValue()
    private int id;
 
-   @ManyToMany(cascade = CascadeType.ALL)
+   @ManyToMany(cascade = CascadeType.PERSIST)
    private Collection<Article> articles;
 
    public int getId() {
@@ -42,5 +42,12 @@ public class Cart {
    public void addArticle(final Article article) {
        this.articles.add(article);
    }
+
+    /**
+    * Clear le panier.
+    */
+    public void clear() {
+        this.articles.clear();
+    }
 
  }

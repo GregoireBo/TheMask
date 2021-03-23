@@ -4,6 +4,7 @@ import org.apache.commons.codec.binary.Base64;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,6 +14,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Article {
+   private static final int DESCRIPT_SIZE = 5000;
 
    @Id
    @GeneratedValue()
@@ -23,6 +25,7 @@ public class Article {
    private Person person;
 
    private String name;
+   @Column(length = DESCRIPT_SIZE)
    private String descrit;
    private String size;
    private byte[] picture;
@@ -91,6 +94,6 @@ public class Article {
     * @return string
     */
    public String getPictureString() {
-      return Base64.encodeBase64String(this.getPicture());
+      return "data:image/png;base64," + Base64.encodeBase64String(this.getPicture());
    }
  }

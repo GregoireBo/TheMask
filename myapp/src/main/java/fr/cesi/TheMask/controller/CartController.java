@@ -5,6 +5,7 @@ import fr.cesi.TheMask.model.Cart;
 import fr.cesi.TheMask.model.Person;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -21,17 +22,17 @@ public class CartController extends Persist<Cart> implements ControllerInterface
      * @param articleId Id de l'article à ajouter
      */
     public boolean addArticle(final Person person, final int articleId) {
-        PersonController personController = new PersonController();
+        CartController cartController = new CartController();
         if (person.getCart() == null) {
             person.setCart(new Cart());
         }
 
-        if (checkIfExistInCart(person.getCart().getId(), articleId)) {
+        if (!checkIfExistInCart(person.getCart(), articleId)) {
             ArticleController articleController = new ArticleController();
             Article article = articleController.get(articleId);
             if (article != null) {
                 person.addArticleToCart(article);
-                personController.save(person);
+                cartController.save(person.getCart());
                 return true;
             } else {
                 this.addError("Article was not found");
@@ -42,6 +43,37 @@ public class CartController extends Persist<Cart> implements ControllerInterface
             return false;
         }
 
+    }
+
+    /**
+     * Permet de supprimer un article d'un utilisateur.
+     * @param person person auquel on va ajouter l'article
+     * @param articleId Id de l'article à ajouter
+     */
+    public boolean deleteArticle(final Person person, final int articleId) {
+        PersonController personController = new PersonController();
+        Iterator<Article> i = person.getCart().getArticles().iterator();
+        Article article = new Article();
+        while (i.hasNext()) {
+            article = i.next();
+           if (article.getId() == articleId) {
+              i.remove();
+              personController.save(person);
+              break;
+           }
+        }
+        return true;
+    }
+
+    /**
+     * Permet de supprimer un article d'un utilisateur.
+     * @param cart que on va clear
+     */
+    public boolean clearCart(final Cart cart) {
+        CartController cartController = new CartController();
+        cart.clear();
+        cartController.save(cart);
+        return true;
     }
 
     @Override
@@ -58,15 +90,12 @@ public class CartController extends Persist<Cart> implements ControllerInterface
         return q.getSingleResult();
     }
 
-    private boolean checkIfExistInCart(final int cartId, final int articleId) {
-        EntityManager em = getEntityManager();
-        TypedQuery<Integer> q =
-            em.createQuery("SELECT c.id FROM Cart c"
-            + " inner join c.articles a"
-            + " WHERE c.id = ?1 AND a.id = ?2", Integer.class);
-        q.setParameter(1, cartId);
-        q.setParameter(2, articleId);
-
-        return q.getResultList().isEmpty();
+    private boolean checkIfExistInCart(final Cart cart, final int articleId) {
+        for (Article article : cart.getArticles()) {
+            if (article.getId() == articleId) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -7,30 +7,49 @@
 <html>
     <head>
         ${Bootstrap}
-        <title>${Title} - Sign in</title>
+        <title>${Title} - Panier</title>
     </head>
     <body>
         <%@include file="Header.jsp" %>
-        <div class="col-6 offset-3">
-            <div class="list-group">
-                <c:forEach var = "article" items = "${PersonConnected.cart.articles}"> <!-- A modifier -->
-                    <div class="row border rounded mt-2 p-2">
+        <div>
+        </div>
+        <div class="container">
+          <h1>Panier</h1>
+          <div class="list-group">
+              <c:forEach var = "article" items = "${PersonConnected.cart.articles}"> <!-- A modifier -->
+                  <div class="row border rounded mt-2 p-2">
 
-                      <div class="col-5">
-                          <a href="${DefaultPath}/Article?id=${article.id}"><img src="data:image/png;base64,${article.getPictureString()}" class="img-fluid"></a>
-                      </div>
-                      <div class="col-7">
-                        <h3 class="title">${article.name}</h3>
-                        <p class="text-muted"><span class="fas fa-euro-sign"></span> Gratuit</p>
-                        <p>${article.descript}</p>
-                      </div>
+                    <div class="col-5">
+                        <a href="${DefaultPath}/Article?id=${article.id}"><img src="${article.getPictureString()}" class="img-fluid"></a>
                     </div>
-                    <hr>
-                  </c:forEach>
-                <c:if test="${PersonConnected.cart.articles.size() le 0}">
-                    Pas d'articles dans le panier.
-                </c:if>
-              </div>
+                    <div class="col-7">
+                      <h3 class="title">${article.name}</h3>
+                      <p class="text-muted"><span class="fas fa-euro-sign"></span> Gratuit</p>
+                      <p>${article.descript}</p>
+                      <p class="text-right">
+                        <a class="btn btn-danger" href="${DefaultPath}/AddArticleToCart?articleId=${article.id}&type=delete"><i class="fas fa-trash-alt"></i></a>
+                      </p>
+                    </div>
+                  </div>
+                </c:forEach>
+            </div>
+            <c:choose>
+              <c:when test="${PersonConnected.cart.articles.size() le 0}">
+                Pas d'articles dans le panier.
+              </c:when>
+              <c:otherwise>
+                <p class="text-right">
+                  <button class="btn btn-primary text-white mt-5" onclick="command()">Commander</i></button>
+                </p>
+              </c:otherwise>
+          </c:choose>
         </div>
     </body>
 </html>
+
+<script>
+  function command() {
+    alert('La commande à été passée, vous receverez vos articles sous peu !');
+    window.location.replace("${DefaultPath}/AddArticleToCart?articleId=-1&type=clear");
+  }
+</script>
