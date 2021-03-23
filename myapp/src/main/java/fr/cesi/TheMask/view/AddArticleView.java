@@ -101,7 +101,7 @@ public class AddArticleView extends ViewBase implements ViewInterface {
       request.setAttribute("ErrorMessagelist", articleController.getErrorMessage());
       this.processRequest("views/AddArticle.jsp", request, response);
     } else {
-      response.sendRedirect(DEFAULT_PATH);
+      response.sendRedirect(DEFAULT_PATH + "/Article?id=" + articleSaved.getId());
     }
   }
 }
