@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="fr.cesi.TheMask.model.Cart"%>
@@ -141,8 +140,9 @@
                       <p class="text-muted"><span class="fas fa-euro-sign"></span> Gratuit</p>
                       <p>${article.descript}</p>
                       
-                      <p class="text-muted"><a href="${DefaultPath}/AddArticleToCart?articleId=${article.id}">AJOUTER_MASQUE_X</a></p>
-                      
+                      <c:if test="${not empty PersonConnected}">
+                        <p class="text-muted"><a href="${DefaultPath}/AddArticleToCart?articleId=${article.id}">AJOUTER_MASQUE_X</a></p>
+                      </c:if>
                     </div>
                   </div>
                   <hr>

@@ -6,14 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-<<<<<<< HEAD
 import fr.cesi.TheMask.controller.ArticleController;
 
-@WebServlet("/")
-=======
 @WebServlet("/Index")
->>>>>>> main
 public class IndexView extends ViewBase implements ViewInterface {
     static final long serialVersionUID = -1;
 
