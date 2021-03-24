@@ -26,5 +26,8 @@ public class ArticleController extends Persist<Article> implements ControllerInt
         q.setParameter(1, id);
 
         return q.getSingleResult();
+
+
+        
     }
 }
